@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SupportUtilExample</string>
+    <string name="diff_util">DiffUtilActivity</string>
+    <string name="add_item">+Item</string>
+    <string name="remove_item">-Item</string>
+    <string name="change_item">Change Item</string>
+    <string name="refresh_all_item">Refresh</string>
+
+
+</resources>
