@@ -5,6 +5,8 @@
     <string name="remove_item">-Item</string>
     <string name="change_item">Change Item</string>
     <string name="refresh_all_item">Refresh</string>
+    <string name="ui_thread">UI Thread</string>
+    <string name="sub_thread">Sub Thread</string>
 
 
 </resources>

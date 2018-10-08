@@ -2,12 +2,16 @@ package com.mrtrying.supportutil.example.diffutil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.mrtrying.supportutil.example.R;
@@ -24,6 +28,17 @@ public class DiffUtilActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     DiffAdapter mAdapter;
+    boolean isUiThread = true;
+
+    private Handler mHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if(msg.obj != null){
+                notifyChangeData((List<MeiZhiData>) msg.obj);
+            }
+            return false;
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +52,26 @@ public class DiffUtilActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.diff_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.ui_thread:
+                isUiThread = true;
+                return true;
+            case R.id.sub_thread:
+                isUiThread = false;
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
     public void addItem(View view) {
         List<MeiZhiData> meiZhiDataList = cloneMeizhiData();
         MeiZhiData data = new MeiZhiData();
@@ -44,11 +79,15 @@ public class DiffUtilActivity extends AppCompatActivity {
         data.image = "http://7xi8d6.com1.z0.glb.clouddn.com/20171212083612_WvLcTr_Screenshot.jpeg";
         meiZhiDataList.add(1,data);
 
+
         changeUI(meiZhiDataList);
     }
 
     public void removeItem(View view) {
         List<MeiZhiData> meiZhiDataList = cloneMeizhiData();
+        if(meiZhiDataList.size() <= 2){
+            return;
+        }
         meiZhiDataList.remove(2);
 
         changeUI(meiZhiDataList);
@@ -56,6 +95,9 @@ public class DiffUtilActivity extends AppCompatActivity {
 
     public void changeItem(View view) {
         List<MeiZhiData> meiZhiDataList = cloneMeizhiData();
+        if(meiZhiDataList.size() <= 1){
+            return;
+        }
         MeiZhiData data = new MeiZhiData();
         data.who = "mrtrying";
         data.image = "http://7xi8d6.com1.z0.glb.clouddn.com/20171219115747_tH0TN5_Screenshot.jpeg";
@@ -122,6 +164,19 @@ public class DiffUtilActivity extends AppCompatActivity {
     }
 
     private void changeUI(List<MeiZhiData> meiZhiDataList) {
+        if(isUiThread){
+            notifyChangeData(meiZhiDataList);
+        }else{
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    mHandler.sendEmptyMessage(0);
+                }
+            }).start();
+        }
+    }
+
+    private void notifyChangeData(List<MeiZhiData> meiZhiDataList) {
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ItemDiffCallback<>(mAdapter.getMeiZhiDataList(),meiZhiDataList));
         diffResult.dispatchUpdatesTo(mAdapter);
         mAdapter.setMeiZhiDataList(meiZhiDataList);
