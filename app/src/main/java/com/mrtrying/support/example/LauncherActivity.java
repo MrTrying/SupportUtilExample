@@ -1,11 +1,11 @@
-package com.mrtrying.supportutil.example;
+package com.mrtrying.support.example;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.mrtrying.supportutil.example.diffutil.DiffUtilActivity;
+import com.mrtrying.support.example.constraintlayout.ConstraintLayoutActivity;
+import com.mrtrying.support.example.utillib.diffutil.DiffUtilActivity;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -17,5 +17,9 @@ public class LauncherActivity extends AppCompatActivity {
 
     public void openDiffUtilActivity(View view){
         DiffUtilActivity.startActivity(this);
+    }
+
+    public void openConstrainLayoutActivity(View view){
+        ConstraintLayoutActivity.startActivity(this);
     }
 }

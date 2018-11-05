@@ -1,14 +1,13 @@
-package com.mrtrying.supportutil.example.diffutil;
+package com.mrtrying.support.example.utillib.diffutil;
 
 import android.support.annotation.Nullable;
 import android.support.v7.util.DiffUtil;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Description :
- * PackageName : com.mrtrying.supportutil.example.diffutil
+ * PackageName : com.mrtrying.support.example.utillib.diffutil
  * Created by tanzeyu on 2018/9/30 17:16.
  * e_mail : ztanzeyu@gmail.com
  */

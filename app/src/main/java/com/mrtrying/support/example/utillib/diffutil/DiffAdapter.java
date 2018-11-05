@@ -1,4 +1,4 @@
-package com.mrtrying.supportutil.example.diffutil;
+package com.mrtrying.support.example.utillib.diffutil;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,14 +10,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.mrtrying.supportutil.example.R;
-import com.mrtrying.supportutil.example.common.MeiZhiData;
+import com.mrtrying.support.example.R;
+import com.mrtrying.support.example.utillib.common.MeiZhiData;
 
 import java.util.List;
 
 /**
  * Description :
- * PackageName : com.mrtrying.supportutil.example.diffutil
+ * PackageName : com.mrtrying.support.example.utillib.diffutil
  * Created by tanzeyu on 2018/10/4 09:26.
  * e_mail : ztanzeyu@gmail.com
  */

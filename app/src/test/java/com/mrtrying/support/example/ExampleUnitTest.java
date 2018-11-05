@@ -1,4 +1,4 @@
-package com.mrtrying.supportutil.example;
+package com.mrtrying.support.example;
 
 import org.junit.Test;
 

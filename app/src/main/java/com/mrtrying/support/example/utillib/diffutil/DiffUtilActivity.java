@@ -1,4 +1,4 @@
-package com.mrtrying.supportutil.example.diffutil;
+package com.mrtrying.support.example.utillib.diffutil;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.mrtrying.supportutil.example.R;
-import com.mrtrying.supportutil.example.common.MeiZhiData;
+import com.mrtrying.support.example.R;
+import com.mrtrying.support.example.utillib.common.MeiZhiData;
 
 import org.json.JSONArray;
 import org.json.JSONException;

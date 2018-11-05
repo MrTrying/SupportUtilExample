@@ -1,4 +1,4 @@
-package com.mrtrying.supportutil.example;
+package com.mrtrying.support.example;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.mrtrying.supportutil.example", appContext.getPackageName());
+        assertEquals("com.mrtrying.support.example", appContext.getPackageName());
     }
 }

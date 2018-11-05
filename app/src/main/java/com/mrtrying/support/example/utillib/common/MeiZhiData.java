@@ -1,4 +1,4 @@
-package com.mrtrying.supportutil.example.common;
+package com.mrtrying.support.example.utillib.common;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  * Description :
- * PackageName : com.mrtrying.supportutil.example.common
+ * PackageName : com.mrtrying.support.example.utillib.common
  * Created by tanzeyu on 2018/9/30 17:58.
  * e_mail : ztanzeyu@gmail.com
  */
